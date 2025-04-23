@@ -1,5 +1,7 @@
+import { ProgressData } from "../interfaces/progressData";
+
 // Función ajustada para generar datos simulados de progreso con mínimo de 56 llaves
-export const generateMockData = ({ id }: { id: number }) => {
+export const generateMockData = ({ id }: { id: number }): ProgressData => {
   // Generar datos con variabilidad pero que algunos tengan progreso destacado (alto o bajo)
   const isHighPerformer = id % 5 === 0; // Cada 5to registro es un alto rendimiento
   const isLowPerformer = id % 7 === 0; // Cada 7mo registro es un rendimiento moderado-bajo
