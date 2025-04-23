@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { db } from "../config/firebase";
 import { collection, getDocs, query } from "firebase/firestore";
 import { User } from "../interfaces/user";
-import ColaboratorCard from "../components/ColaboratorCard";
+import CollaboratorCard from "../components/CollaboratorCard";
 import Loading from "../components/LoadingComponent";
 import HeaderCard from "../components/HeaderCard";
 import ListOfBestColabs from "../components/ListOfBestColabs";
@@ -225,7 +225,7 @@ export default function Dashboard() {
                       key={user.id}
                       className="bg-background-box border border-border-neutral rounded-md p-4 shadow-default hover:shadow-hover transition-shadow"
                     >
-                      <ColaboratorCard
+                      <CollaboratorCard
                         user={user}
                         index={index}
                         currentPage={currentPage}
@@ -237,7 +237,6 @@ export default function Dashboard() {
               </div>
             </section>
 
-            {/* Pagination controls */}
             {filteredUsers.length > 0 && (
               <nav className="flex justify-between items-center bg-background-box p-4 rounded-md shadow-default border border-border-neutral">
                 <button

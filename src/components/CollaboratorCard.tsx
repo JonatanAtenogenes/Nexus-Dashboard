@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { User } from "../interfaces/user";
+import ReferralsCard from "./ReferralsCard";
 
-export default function ColaboratorCard({
+export default function CollaboratorCard({
   user,
   index,
   currentPage,
@@ -11,6 +13,8 @@ export default function ColaboratorCard({
   currentPage: number;
   usersPerPage: number;
 }) {
+  const [showDetails, setShowDetails] = useState(false);
+
   return (
     <>
       <div className="flex justify-between items-center">
@@ -37,13 +41,18 @@ export default function ColaboratorCard({
 
       <div className="mt-4 pt-3 border-t border-border-neutral flex justify-between">
         <div>
-          <span className="text-text-soft text-small">Puntos base:</span>
+          <span className="text-text-soft text-small">Puntos:</span>
           <span className="ml-2 font-medium">{user.points}</span>
         </div>
-        <button className="text-brand-afore hover:underline text-small">
+        <button
+          className="text-brand-afore hover:underline text-small"
+          onClick={() => setShowDetails(!showDetails)}
+        >
           Ver detalles
         </button>
       </div>
+
+      {showDetails && <ReferralsCard />}
     </>
   );
 }
