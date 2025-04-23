@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { microentrepreneurs } from "../data/Microentrepreneurs";
 import { microentrepreneur } from "../interfaces/microentrepreneur";
 import { generateMockData } from "../utils/MockData";
+import { ProgressData } from "../interfaces/progressData";
 
 export default function ReferralsCard() {
   const [referrals, setReferrals] = useState<microentrepreneur[]>([]);
@@ -22,11 +23,10 @@ export default function ReferralsCard() {
     try {
       const referralData = microentrepreneurs;
 
-      const progressDataMap = {};
+      const progressDataMap: Record<number, ProgressData> = {};
       referralData.forEach((referral) => {
-        progressDataMap[Number(referral.id)] = generateMockData(
-          Number(referral.id)
-        );
+        const id: number = Number(referral.id);
+        progressDataMap[id] = generateMockData({ id: id });
       });
 
       setReferrals(referralData);
